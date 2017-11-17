@@ -1,18 +1,13 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package lab.kecebong.penuliswebapp.controller;
+package com.embuh.webapptokobuku.controller;
 
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestParam;
-import lab.kecebong.penuliswebapp.entity.Penulis;
+import com.embuh.webapptokobuku.entity.data_buku;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import lab.kecebong.penuliswebapp.repo.PenulisRepo;
+import com.embuh.webapptokobuku.repo.BukuRepo;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -25,56 +20,55 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class AppController {
     
     @Autowired
-    private PenulisRepo pnlsRepo;
+    private BukuRepo bkRepo;
     
     @RequestMapping("/home")
     public void index() {}
     
-    @RequestMapping("/daftar-penulis")
-    public void getDaftarMahasiswa(Model model) {
-        model.addAttribute("daftarPenulis",pnlsRepo.findAll());
+    @RequestMapping("/data_buku")
+    public void getDataBuku(Model model) {
+        model.addAttribute("dataBuku",bkRepo.findAll());
     }
 
     @RequestMapping(value = "/tambah-data" , method = RequestMethod.GET)
     public void getFormTambahData(
-    	@ModelAttribute("pnls") Penulis pnls, 
+    	@ModelAttribute("bk") data_buku bk, 
     	BindingResult result ) {}
 
     @RequestMapping(value = "/tambah-data" , method = RequestMethod.POST)
     public String simpanData(
-    	@ModelAttribute("pnls") Penulis pnls, BindingResult result) {
+    	@ModelAttribute("bk") data_buku bk, BindingResult result) {
 
-    	System.out.println("id : " + pnls.getId());
-    	System.out.println("nama : " + pnls.getNama());
-    	System.out.println("judul_buku : " + pnls.getJudul_buku());
-    	pnlsRepo.save(pnls);
-    	return "redirect:daftar-penulis";
+    	System.out.println("id : " + bk.getId());
+    	System.out.println("judul_buku : " + bk.getJudul_buku());
+    	System.out.println("harga : " + bk.getHarga());
+    	bkRepo.save(bk);
+    	return "redirect:data_buku";
     }
     
     @RequestMapping(value = "/edit", method = RequestMethod.GET)
     public void getEditData(@RequestParam(name = "id", required =
     false) String id,
-        @ModelAttribute("pnls") Penulis penulis, BindingResult
+        @ModelAttribute("bk") data_buku buku, BindingResult
         binding) {
-        Penulis pnls = pnlsRepo.findOne(id);
-        penulis.setId(pnls.getId());
-        penulis.setNama(pnls.getNama());
-        penulis.setJudul_buku(pnls.getJudul_buku());
+        data_buku bk = bkRepo.findOne(id);
+        buku.setId(bk.getId());
+        buku.setJudul_buku(bk.getJudul_buku());
+        buku.setHarga(bk.getHarga());
     }
-    
     @RequestMapping(value = "/edit", method = RequestMethod.POST)
     public String saveEditData(
-        @ModelAttribute("pnls") Penulis pnls,
+        @ModelAttribute("bk") data_buku bk,
         BindingResult binding) {
-        pnlsRepo.save(pnls);
-        return "redirect:/daftar-penulis";
+        bkRepo.save(bk);
+        return "redirect:/data_buku";
     }
     
     @RequestMapping("/delete")
     public String deleteData(
         @RequestParam(name = "id", required = true) String id) {
-        pnlsRepo.delete(id);
-        return "redirect:/daftar-penulis";
+        bkRepo.delete(id);
+        return "redirect:/data_buku";
     }
     
 }

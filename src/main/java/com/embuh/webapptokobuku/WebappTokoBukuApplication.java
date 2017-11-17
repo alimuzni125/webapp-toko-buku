@@ -1,12 +1,12 @@
-package lab.kecebong.penuliswebapp;
+package com.embuh.webapptokobuku;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PenulisWebappApplication {
+public class WebappTokoBukuApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PenulisWebappApplication.class, args);
+		SpringApplication.run(WebappTokoBukuApplication.class, args);
 	}
 }

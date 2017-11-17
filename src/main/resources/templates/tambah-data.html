@@ -5,9 +5,9 @@
 </head>
 <body>
 
-	<h1 align="center">Tambah Data Penulis</h1>
+	<h1 align="center">Tambah Data Buku</h1>
 
-	<form th:action="@{/tambah-data}" method="post" th:object="${pnls}">
+	<form th:action="@{/tambah-data}" method="post" th:object="${bk}">
 		<table align="center">
 			<tr>
 				<td>ID</td>
@@ -16,14 +16,14 @@
 			</tr>
 
 			<tr>
-				<td>NAMA</td>
-				<td><input type="text" th:field="*{nama}" /> </td>
+				<td>JUDUL BUKU</td>
+				<td><input type="text" th:field="*{judul_buku}" /> </td>
 				<td></td>
 			</tr>
 
 			<tr>
-				<td>JUDUL BUKU</td>
-				<td><input type="text" th:field="*{judul_buku}" /></td>
+				<td>HARGA</td>
+				<td><input type="text" th:field="*{harga}" /></td>
 				<td></td>
 			</tr>
 

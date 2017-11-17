@@ -4,8 +4,8 @@
 	<title>Formulir Ubah Data</title>
 </head>
 <body>
-	<h1 align="center">Ubah Data Penulis</h1>
-	<form th:action="@{/edit}" th:object="${pnls}" method="post">
+	<h1 align="center">Ubah Data Buku</h1>
+	<form th:action="@{/edit}" th:object="${bk}" method="post">
 	<table align="center">
 		<tr>
 		<td>ID</td>
@@ -13,13 +13,13 @@
 		<td><input type="hidden" th:field="*{id}" /></td>
 		</tr>
 		<tr>
-		<td>NAMA</td>
-		<td><input type="text" th:field ="*{nama}" /></td>
+		<td>JUDUL BUKU</td>
+		<td><input type="text" th:field ="*{judul_buku}" /></td>
 		</tr>
 
 		<tr>
-		<td>JUDUL BUKU</td>
-		<td><input type="text" th:field ="*{judul_buku}" /></td>
+		<td>HARGA</td>
+		<td><input type="text" th:field ="*{harga}" /></td>
 		</tr>
                 
                 <tr>

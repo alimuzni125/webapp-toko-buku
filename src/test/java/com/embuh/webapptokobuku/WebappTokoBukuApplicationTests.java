@@ -1,4 +1,4 @@
-package lab.kecebong.penuliswebapp;
+package com.embuh.webapptokobuku;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,7 +7,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class PenulisWebappApplicationTests {
+public class WebappTokoBukuApplicationTests {
 
 	@Test
 	public void contextLoads() {
